@@ -9,3 +9,14 @@ Thumbs.db
 
 # Env
 .env
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Pelican build output
+output/
+
+# Local Gutenberg downloads used as input sources
+pg*-h/
