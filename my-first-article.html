@@ -7,7 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://asajid2-cell.github.io/404--l4/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="My cool site Full Atom Feed" />
 
-    <link id="_stylesheet" rel="stylesheet" type="text/css" href="https://asajid2-cell.github.io/404--l4/theme/fancy.css?v=5" />
+    <link id="_stylesheet" rel="stylesheet" type="text/css" href="https://asajid2-cell.github.io/404--l4/theme/fancy.css?v=6" />
 
 
 
@@ -23,6 +23,12 @@
     <button type="button" onclick="changeStylesheet('minimal.css')">Minimal mode</button>
     <button type="button" onclick="changeStylesheet('90s.css')">90s mode</button>
 </div>
+<input type="checkbox" id="fancy-menu-toggle" class="menu-toggle" />
+<label for="fancy-menu-toggle" class="hamburger" aria-label="Toggle navigation menu">
+    <span></span>
+    <span></span>
+    <span></span>
+</label>
           <nav><ul>
                 <li><a href="https://asajid2-cell.github.io/404--l4/category/blog.html"  aria-current="page" >Blog</a></li>
                 <li><a href="https://asajid2-cell.github.io/404--l4/category/books.html" >books</a></li>
@@ -30,12 +36,35 @@
 
 <script>
 const stylesheetRegex = /[^/?]*\.css(?:\?.*)?$/;
-function changeStylesheet(styleName) {
+const modeStorageKey = "mode-css";
+
+function applyStylesheet(styleName, saveChoice) {
     const stylesheet = document.getElementById("_stylesheet");
     if (!stylesheet) return;
 
     const currentHref = stylesheet.getAttribute("href") || "";
-    stylesheet.setAttribute("href", currentHref.replace(stylesheetRegex, `${styleName}?v=5`));
+    stylesheet.setAttribute("href", currentHref.replace(stylesheetRegex, `${styleName}?v=6`));
+
+    if (saveChoice) {
+        try {
+            localStorage.setItem(modeStorageKey, styleName);
+        } catch (error) {
+            // Ignore local storage errors.
+        }
+    }
+}
+
+function changeStylesheet(styleName) {
+    applyStylesheet(styleName, true);
+}
+
+try {
+    const savedStyle = localStorage.getItem(modeStorageKey);
+    if (savedStyle) {
+        applyStylesheet(savedStyle, false);
+    }
+} catch (error) {
+    // Ignore local storage errors.
 }
 </script>
       </header>

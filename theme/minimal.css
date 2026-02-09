@@ -60,6 +60,11 @@ hgroup h1 a {
     background: #ece7da;
 }
 
+.menu-toggle,
+.hamburger {
+    display: none;
+}
+
 header nav ul {
     list-style: none;
     margin: 0;
