@@ -23,8 +23,7 @@ header {
     margin: 1.8rem 0 0 1.4rem;
     padding-left: 1rem;
     border-left: 2px solid #dad7cf;
-    position: sticky;
-    top: 1rem;
+    position: static;
 }
 
 hgroup h1 {
