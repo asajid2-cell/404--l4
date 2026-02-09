@@ -13,10 +13,27 @@
   <body>
       <header>
           <hgroup><h1><a href="https://asajid2-cell.github.io/404--l4/">My cool site</a></h1></hgroup>
+<div class="mode-switch" aria-label="Style mode switcher">
+    <button type="button" onclick="changeStylesheet('fancy.css')">Fancy mode</button>
+    <button type="button" onclick="changeStylesheet('minimal.css')">Minimal mode</button>
+    <button type="button" onclick="changeStylesheet('90s.css')">90s mode</button>
+</div>
           <nav><ul>
                 <li><a href="https://asajid2-cell.github.io/404--l4/category/blog.html" >Blog</a></li>
                 <li><a href="https://asajid2-cell.github.io/404--l4/category/books.html" >books</a></li>
           </ul></nav>
+
+<script>
+const stylesheetRegex = /[^/]*\.css$/;
+
+function changeStylesheet(styleName) {
+    const stylesheet = document.getElementById("_stylesheet");
+    if (!stylesheet) return;
+
+    const currentHref = stylesheet.getAttribute("href") || "";
+    stylesheet.setAttribute("href", currentHref.replace(stylesheetRegex, styleName));
+}
+</script>
       </header>
       <main>
         <h2>All articles</h2>

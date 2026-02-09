@@ -1,7 +1,331 @@
-html, body {
+/* Fancy mode: modern music-app inspired reading layout */
+html {
+    background: #070b08;
+}
+
+body {
     margin: 0;
-    border: 0;
-    font-size: 100%;
-    background-color: #000000;
-    color: #ffffff;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+        "left main"
+        "left foot";
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    color: #e7f7ec;
+    background:
+        radial-gradient(circle at 10% -10%, #1ec76055 0 30%, transparent 60%),
+        radial-gradient(circle at 100% 0%, #169c4655 0 20%, transparent 55%),
+        linear-gradient(165deg, #0a1210 0%, #111815 55%, #09110d 100%);
+}
+
+header {
+    grid-area: left;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
+    padding: 1.4rem 1rem;
+    border-right: 1px solid #224a35;
+    background: linear-gradient(180deg, #0d1713 0%, #0a100d 100%);
+}
+
+hgroup h1 {
+    margin: 0 0 1rem;
+    letter-spacing: 0.06em;
+    font-size: 1.35rem;
+    text-transform: uppercase;
+}
+
+hgroup h1 a {
+    color: #ecfff2;
+    text-decoration: none;
+}
+
+.mode-switch {
+    margin: 0 0 1rem;
+    display: grid;
+    gap: 0.5rem;
+}
+
+.mode-switch button {
+    padding: 0.5rem 0.7rem;
+    border: 1px solid #2a6f4a;
+    border-radius: 999px;
+    color: #e8f9ee;
+    background: #143a29;
+    font-size: 0.87rem;
+    cursor: pointer;
+}
+
+.mode-switch button:hover {
+    background: #1d5f3f;
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header nav li {
+    margin-bottom: 0.55rem;
+}
+
+header nav a {
+    display: block;
+    padding: 0.55rem 0.7rem;
+    border-radius: 0.65rem;
+    color: #c5f5d8;
+    text-decoration: none;
+    background: #11241b;
+}
+
+header nav a[aria-current="page"],
+header nav a:hover {
+    color: #08130d;
+    background: #8ce8b6;
+}
+
+main {
+    grid-area: main;
+    padding: 1.4rem 1.6rem;
+}
+
+main > h2 {
+    margin-top: 0;
+    margin-bottom: 1.3rem;
+    font-size: 1.5rem;
+    color: #9ef0c0;
+}
+
+article {
+    margin: 0 0 1.2rem;
+    padding: 1rem 1rem 0.5rem;
+    border: 1px solid #254634;
+    border-radius: 0.95rem;
+    background: linear-gradient(180deg, #101e17 0%, #0c1511 100%);
+    box-shadow: 0 14px 28px #00000044;
+}
+
+article header h2 {
+    margin-top: 0;
+    margin-bottom: 0.7rem;
+    font-size: 1.25rem;
+}
+
+article header h2 a {
+    color: #f1fff7;
+    text-decoration: none;
+}
+
+article header h2 a:hover {
+    color: #99efc2;
+}
+
+article section,
+article > p,
+article div,
+article table {
+    margin-bottom: 1rem;
+}
+
+article footer {
+    margin-top: 1rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid #244430;
+    color: #a8cbb6;
+    font-size: 0.92rem;
+}
+
+main p {
+    margin: 0 0 0.95rem;
+    line-height: 1.72;
+}
+
+main p + p {
+    text-indent: 0.9rem;
+}
+
+main a {
+    color: #8deab8;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+main a:hover {
+    color: #d6ffe8;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #3b624c;
+    margin: 1.3rem 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #0f1a14;
+}
+
+th,
+td {
+    border: 1px solid #2c5440;
+    padding: 0.5rem;
+    vertical-align: top;
+}
+
+tr:nth-child(even) {
+    background: #132119;
+}
+
+.source {
+    padding: 0.85rem;
+    border-left: 4px solid #4ed289;
+    border-radius: 0.4rem;
+    background: #0f251b;
+    color: #cfefdc;
+}
+
+.chapter {
+    margin-top: 1.2rem;
+}
+
+.no-break {
+    break-before: avoid;
+}
+
+.cb {
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+
+.c,
+.center {
+    text-align: center;
+}
+
+.r,
+.right {
+    text-align: right;
+}
+
+.nind {
+    text-indent: 0;
+}
+
+.blockquot,
+.letter,
+.letter2 {
+    margin: 1rem 0;
+    padding: 0.7rem 0.9rem;
+    border-left: 3px solid #52dd8e;
+    background: #0c1913;
+}
+
+.pfirst::first-letter {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #9ef5c2;
+}
+
+.fig,
+.col2,
+.footnote,
+.full,
+.p2,
+.poem,
+.dropcap,
+.pginternal {
+    color: #deffe9;
+}
+
+footer {
+    grid-area: foot;
+    padding: 0.9rem 1.4rem;
+    border-top: 1px solid #23422f;
+    background: #0a120e;
+}
+
+footer address {
+    margin: 0;
+    color: #a2cdb4;
+    font-style: normal;
+}
+
+footer a {
+    color: #7ed7a8;
+}
+
+time {
+    color: #c9eed9;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        display: block;
+    }
+
+    header {
+        position: static;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #24563c;
+    }
+
+    header nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+    }
+
+    header nav li {
+        margin: 0;
+    }
+
+    header nav a {
+        padding: 0.4rem 0.55rem;
+    }
+
+    main {
+        padding: 1rem 0.8rem;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    article {
+        padding: 1.1rem 1.2rem 0.65rem;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    main {
+        padding: 1.7rem 2rem;
+    }
+
+    article {
+        max-width: 900px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    body {
+        grid-template-columns: 285px minmax(0, 1fr);
+    }
+
+    .mode-switch button {
+        font-size: 0.92rem;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    main {
+        padding: 2rem 2.4rem;
+    }
+
+    article {
+        padding: 1.2rem 1.4rem 0.8rem;
+    }
 }
