@@ -90,6 +90,23 @@ main {
     margin-top: 1.8rem;
 }
 
+main,
+main p,
+main li,
+main td,
+main th,
+main h1,
+main h2,
+main h3,
+main h4,
+main h5,
+main h6,
+article section,
+article footer,
+article div {
+    color: #1f1f1f;
+}
+
 main > h2 {
     margin-top: 0;
     margin-bottom: 1.4rem;
@@ -137,6 +154,7 @@ main p + p {
 
 main a {
     color: #1d4a7a;
+    text-decoration: underline;
     text-decoration-thickness: 1px;
 }
 

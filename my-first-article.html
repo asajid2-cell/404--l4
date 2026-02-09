@@ -7,7 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://asajid2-cell.github.io/404--l4/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="My cool site Full Atom Feed" />
 
-    <link id="_stylesheet" rel="stylesheet" type="text/css" data-theme-base="https://asajid2-cell.github.io/404--l4/theme/" href="https://asajid2-cell.github.io/404--l4/theme/fancy.css?v=2" />
+    <link id="_stylesheet" rel="stylesheet" type="text/css" data-theme-base="https://asajid2-cell.github.io/404--l4/theme/" href="https://asajid2-cell.github.io/404--l4/theme/fancy.css?v=3" />
 
 
 
@@ -29,11 +29,31 @@
           </ul></nav>
 
 <script>
-function changeStylesheet(styleName) {
+const modeStorageKey = "site-mode";
+const validModes = ["fancy.css", "minimal.css", "90s.css"];
+
+function setStylesheet(styleName, saveChoice = true) {
+    if (!validModes.includes(styleName)) return;
+
     const stylesheet = document.getElementById("_stylesheet");
     if (!stylesheet) return;
+
     const base = stylesheet.getAttribute("data-theme-base") || "";
-    stylesheet.setAttribute("href", `${base}${styleName}?v=2`);
+    stylesheet.setAttribute("href", `${base}${styleName}?v=3`);
+
+    if (saveChoice) {
+        localStorage.setItem(modeStorageKey, styleName);
+    }
+}
+
+function changeStylesheet(styleName) {
+    setStylesheet(styleName, true);
+}
+
+// Restore the selected mode when navigating to a new page.
+const savedMode = localStorage.getItem(modeStorageKey);
+if (savedMode) {
+    setStylesheet(savedMode, false);
 }
 </script>
       </header>
